@@ -2,7 +2,7 @@
 use basel::number::core::*;
 use basel::number::modulo::*;
 #[test]
-fn it_works() {
+fn is_prime_test() {
     let result:bool = is_prime(7);
     assert_eq!(result,true);
 }

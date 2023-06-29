@@ -7,17 +7,17 @@ pub fn mod_pow(a:u64,x:u64,p:u64)->u64
     /*
         compute a^x mod p
      */
-    let mut out = 1;
-    let mut base = a % p;
-    let mut exp = x;
+    let mut out:u64 = 1;
+    let mut base:u64 = a % p;
+    let mut exp:u64 = x;
     while exp > 0
     {
         if exp % 2 == 1
         {
-            out = out *base %p;
+            out = (out * base ) %p
         }
         exp = exp >> 1;
-        base = base * base %p;
+        base = ( base   *  base  ) %p;
     }
     return out;
 }
@@ -65,15 +65,14 @@ pub fn tonelli_shanks(a:u64,p:u64)->u64
     {
         n += 1;
     }
-    let mut t;
-    let mut m;
-    let mut gs;
-    let mut x = mod_pow(a,(s+1)/2,p);
-    let mut b = mod_pow(a,s,p);
-    let mut g = mod_pow(n,s,p);
-    let mut r = e;
-    while true
-    {
+    let mut t:u64;
+    let mut m:u64;
+    let mut gs:u64;
+    let mut x:u64 = mod_pow(a,(s+1)/2,p);
+    let mut b:u64 = mod_pow(a,s,p);
+    let mut g:u64 = mod_pow(n,s,p);
+    let mut r:u64 = e;
+    let out:u64 = loop{
         t = b;
         m = 0;
         while t != 1 && m < r
@@ -83,15 +82,15 @@ pub fn tonelli_shanks(a:u64,p:u64)->u64
         }
         if m == 0
         {
-            return x;
+            break x;
         }
         gs = mod_pow(g,mod_pow(2,r-m-1,p),p);
         g = (gs * gs) % p;
         x = (x * gs) % p;
         b = (b * g) % p;
         r = m;
-    }
-    return 0;
+    };
+    return out;
 }
 
 pub fn inverse(a:u64,p:u64)->u64
