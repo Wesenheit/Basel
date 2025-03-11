@@ -1,4 +1,4 @@
-pub fn is_prime(x:i64)->bool
+pub fn is_prime(x: u64)->bool
 {
     /* check in number is prime using rather simple search */
     if x<2
@@ -13,8 +13,9 @@ pub fn is_prime(x:i64)->bool
     {
         return false;
     }
-    let mut i:i64=5;
-    while i<=(x as f64).sqrt() as i64 
+    let mut i:u64=5;
+    //while i<=(x as f64).sqrt() as i64 
+    while i.pow(2) <= x 
     {
         if (x%i==0) || (x%(i+2)==0)
         {
