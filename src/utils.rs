@@ -1,7 +1,7 @@
-mod utils{
+mod utils {
 
-#[macro_export]
-macro_rules! time_it{
+    #[macro_export]
+    macro_rules! time_it{
     ($order:stmt)=> {
         let timer = std::time::Instant::now();
         $order
@@ -14,5 +14,4 @@ macro_rules! time_it{
     };
 
 }
-
 }
