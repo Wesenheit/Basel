@@ -30,15 +30,6 @@ pub fn tonelli_shanks(a: u64, p: u64) -> u64 {
            x^2 mod p = a
        so square root of number using tonelli shanks algo.
     */
-    if legandre(a, p) != 1 {
-        return 0;
-    } else if a == 0 {
-        return 0;
-    } else if p == 2 {
-        return 0;
-    } else if p % 4 == 3 {
-        return mod_pow(a, (p + 1) / 4, p);
-    }
     let mut s: u64 = p - 1;
     let mut e: u64 = 0;
     while s % 2 == 0 {
